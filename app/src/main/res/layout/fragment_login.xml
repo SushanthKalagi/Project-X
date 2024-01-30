@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.LoginFragment"
+    android:background="@drawable/background"
+    >
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textColor="@color/primary"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:layout_marginTop="78dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+
+
+        />
+
+    <LinearLayout
+        android:id="@+id/signInEt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        >
+
+        <EditText
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:id="@+id/email1Et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_margin="8dp"
+            android:hint="Email"
+            android:background="@drawable/textbox"/>
+        <EditText
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:id="@+id/passwordEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_margin="8dp"
+            android:hint="Password"
+            android:background="@drawable/textbox"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/forgotPass"
+            android:textColor="@color/primary"
+            android:textStyle="bold"
+            android:text="Forgot Password?"
+            android:layout_gravity="end"
+            android:layout_marginEnd="16dp"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/signInButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign In"
+        android:background="@drawable/btn_back"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/signInEt"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="8dp"/>
+    <TextView
+        android:id="@+id/moreOptn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="More options:"
+        android:textColor="@color/primary"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/signInButton"
+        android:layout_margin="16dp"
+    />
+    <Button
+        android:id="@+id/GoogleSignButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Google Sign in"
+        android:background="@drawable/btn_back"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/moreOptn"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
+         />
+    <TextView
+        android:id="@+id/createAccountText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="26dp"
+        android:text="Create An Account"
+        android:textStyle="bold"
+        android:textColor="@color/primary"/>
+
+</RelativeLayout>

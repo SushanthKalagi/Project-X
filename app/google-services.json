@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "953081307896",
+    "project_id": "madlab-cc290",
+    "storage_bucket": "madlab-cc290.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:953081307896:android:a797c1d7ba3e68d10a510d",
+        "android_client_info": {
+          "package_name": "com.example.project_x"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "953081307896-ib6g3abqkcn4m6e66kcfh29m3ug36h7j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.project_x",
+            "certificate_hash": "4dbfeb909c5db329da047f8f42654741a42a718a"
+          }
+        },
+        {
+          "client_id": "953081307896-phfhd8rpfsq2o3ch95nlhhqq86o2bgnu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmQEzCibWV9dLXf1OfK-RwuJOqMhahj-M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "953081307896-phfhd8rpfsq2o3ch95nlhhqq86o2bgnu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
