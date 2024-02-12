@@ -7,7 +7,7 @@
     android:background="@drawable/background"
     >
 
-    <!-- TODO: Update blank fragment layout -->
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -106,5 +106,6 @@
         android:text="Create An Account"
         android:textStyle="bold"
         android:textColor="@color/primary"/>
+
 
 </RelativeLayout>

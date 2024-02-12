@@ -3,6 +3,8 @@ package com.example.project_x.fragments
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.TextUtils
 import android.util.Log
 import android.util.Patterns
@@ -11,7 +13,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.findViewTreeViewModelStoreOwner
@@ -25,7 +29,7 @@ import java.util.Objects
 
 
 class CreateAccountFragment : Fragment() {
-    // TODO: Rename and change types of parameters
+
 
     private lateinit var nameEt:EditText
     private lateinit var emailEt:EditText
@@ -34,6 +38,9 @@ class CreateAccountFragment : Fragment() {
     private lateinit var loginTextEt: TextView
     private lateinit var signUpBtnEt: Button
     private lateinit var auth: FirebaseAuth
+    private lateinit var enable2fa: CheckBox
+    private var progressStatus = 0
+    private lateinit var handler: Handler
 
     private fun isValidEmail(email: String): Boolean {
         return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches()
@@ -63,14 +70,38 @@ class CreateAccountFragment : Fragment() {
         confirmPassEt = view.findViewById(R.id.confirmPass)
         loginTextEt = view.findViewById(R.id.backToLoginText)
         signUpBtnEt = view.findViewById(R.id.signUpButton)
+        enable2fa = view.findViewById(R.id.enable2FAcb)
 
         auth = FirebaseAuth.getInstance()
 
 
         loginTextEt.setOnClickListener{
-            FragmentReplacer().setFragment(LoginFragment())
+            (requireActivity() as FragmentReplacer).setFragment(LoginFragment())
         }
         signUpBtnEt.setOnClickListener {
+            handler = Handler(Looper.getMainLooper())
+
+            // Start a background thread to simulate progress updates
+            Thread {
+                while (progressStatus < 100) {
+                    progressStatus += 1
+
+                    // Update the progress bar on the UI thread
+                    handler.post {
+                        var progressBar:ProgressBar = view.findViewById(R.id.progressBar)
+                        var textViewProgress:TextView = view.findViewById(R.id.textViewProgress)
+                        progressBar.progress = progressStatus
+                        textViewProgress.text = "$progressStatus%"
+                    }
+
+                    // Simulate a delay to show progress updates
+                    try {
+                        Thread.sleep(100)
+                    } catch (e: InterruptedException) {
+                        e.printStackTrace()
+                    }
+                }
+            }.start()
             val name = nameEt.text.toString()
             val email: String = emailEt.text.toString()
             val password: String = passwordEt.text.toString()
@@ -129,21 +160,34 @@ class CreateAccountFragment : Fragment() {
             }
 
     }
+
     private fun updateUI(user: FirebaseUser?, name: String, email: String){
+
         var hashMap : HashMap<String, String>  = HashMap<String, String> ()
         hashMap["name"] = name
         hashMap["email"] = email
         hashMap["uid"] = user!!.uid
+        val bundle = Bundle().apply {
+            putParcelable("user", user)
+        }
+
+        // Navigate to SendOTP fragment with the bundle
+        val sendOTPFragment = SendOTP().apply {
+            arguments = bundle
+        }
 
         FirebaseFirestore.getInstance().collection("Users").document(user.uid)
             .set(hashMap)
             .addOnCompleteListener{task ->
-                if(task.isSuccessful){
-                    val i = Intent(activity?.applicationContext, MainActivity::class.java)
-                    startActivity(i)
-                    activity?.finish()
+                if(task.isSuccessful and enable2fa.isChecked){
+                    (requireActivity() as FragmentReplacer).setFragment(sendOTPFragment)
 
-                }else {
+
+                }else if (task.isSuccessful and !enable2fa.isChecked){
+                    (requireActivity() as FragmentReplacer).setFragment(LoginFragment())
+                }
+
+                else {
                     Toast.makeText(activity?.applicationContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
                 }
 

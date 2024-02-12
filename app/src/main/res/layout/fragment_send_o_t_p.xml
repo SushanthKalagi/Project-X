@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.SendOTP"
+    android:background="@drawable/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:id="@+id/ll1"
+
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter Your Phone Number"
+            android:textColor="@color/white"
+            android:layout_margin="8dp"
+            />
+        <EditText
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="91XXXXXXXXXX"
+            android:inputType="phone"
+            android:background="@drawable/textbox"
+            android:textColorHint="@color/black"
+            android:padding="12dp"
+            android:layout_margin="8dp"
+            />
+
+    </LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send OTP"
+        android:id="@+id/sendotpbtn"
+        android:textAlignment="gravity"
+
+        android:layout_below="@+id/ll1"
+        android:layout_centerHorizontal="true"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Enter Your Phone Number"
+        android:textColor="@color/white"
+        android:visibility="invisible" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/enterOTPtb"
+        android:inputType="number"
+        android:hint="Enter The code sent on your number"
+        android:background="@drawable/textbox"
+        android:textColorHint="@color/black"
+        android:padding="12dp"
+        android:layout_margin="8dp"
+        android:layout_below="@id/sendotpbtn"
+
+        />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Verify Otp"
+        android:id="@+id/verifyotpbtn"
+        android:textAlignment="gravity"
+
+        android:layout_below="@+id/enterOTPtb"
+        android:layout_centerHorizontal="true"
+
+        />
+
+</RelativeLayout>

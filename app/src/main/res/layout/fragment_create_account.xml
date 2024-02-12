@@ -5,14 +5,34 @@
     android:layout_height="match_parent"
     tools:context=".fragments.CreateAccountFragment"
     android:background="@drawable/background">
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:max="100"
+        android:progress="0"
+        android:layout_below="@id/text1"/>
 
-    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/textViewProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/progressBar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="0%"
+
+        android:textSize="20sp" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create \nAccount"
         android:textColor="@color/primary"
         android:textStyle="bold"
+        android:id="@+id/text1"
         android:textSize="24sp"
         android:layout_marginTop="78dp"
         android:layout_marginStart="16dp"
@@ -67,6 +87,15 @@
             android:layout_margin="8dp"
             android:hint="Confirm Password"
             android:background="@drawable/textbox"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/enable2FAcb"
+            android:text="Enable Two Factor"
+            android:checked="false"
+            android:layout_margin="8dp"
+            android:textColor="@color/primary"
+            />
     </LinearLayout>
 
     <Button
@@ -80,6 +109,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginTop="8dp"/>
+
     <TextView
         android:id="@+id/backToLoginText"
         android:layout_width="wrap_content"

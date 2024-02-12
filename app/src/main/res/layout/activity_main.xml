@@ -11,6 +11,18 @@
         android:id="@+id/folderContainer"
         android:orientation="vertical"
         />
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <ImageView
+        android:layout_height="180dp"
+        android:layout_width="100dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/uploadbtn"
+        app:srcCompat="@drawable/myimage" />
+
 
 
 </RelativeLayout>
