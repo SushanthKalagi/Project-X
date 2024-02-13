@@ -5,16 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-    <LinearLayout
+
+    <WebView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/folderContainer"
-        android:orientation="vertical"
-        />
-    <FrameLayout
-        android:id="@+id/fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:id="@+id/webview"/>
+
     <ImageView
         android:layout_height="180dp"
         android:layout_width="100dp"
